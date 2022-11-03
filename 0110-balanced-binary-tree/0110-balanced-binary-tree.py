@@ -7,7 +7,9 @@
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
       
+      
       self.ans=1
+      
       def solver(root):
         
         if not root:
@@ -19,16 +21,15 @@ class Solution:
         if abs(left-right)>1:
           self.ans=0
           
-        return max(left,right)+1
+        return 1+max(left,right)
       
       solver(root)
       
       if self.ans==1:
         return True
+      
       else:
         return False
-      
-      
           
         
       
