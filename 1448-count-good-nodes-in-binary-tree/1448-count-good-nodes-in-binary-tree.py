@@ -6,20 +6,20 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-    
+      
       self.ans=0
-      def solver(root, maxn):
+      
+      def solver(root, mxn):
         
         if not root:
           return 
         
-        if root.val>=maxn:
+        if root.val>=mxn:
           
           self.ans+=1
-        
-        solver(root.left, max(root.val,maxn))
-        solver(root.right, max(root.val,maxn))
-        
-      solver(root,float('-inf'))
-      return self.ans        
-        
+          
+        solver(root.left, max(root.val,mxn))
+        solver(root.right, max(root.val,mxn))
+      solver(root, float('-inf'))
+      
+      return self.ans
