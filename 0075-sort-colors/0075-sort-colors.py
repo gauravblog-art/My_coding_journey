@@ -3,19 +3,20 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        a=nums.count(1)
-        b=nums.count(0)
-        c=nums.count(2)
         
+        i=0
+        l=0
+        r=len(nums)-1
         
-  
-        for i in range(b):
-        
-          nums[i]=0
-        for i in range(b,a+b):
-         
-          nums[i]=1
-        for i in range(a+b,a+b+c):
-          nums[i]=2
-        
+        while i<=r:
+          
+          if  nums[i]==0:
+            nums[i],nums[l]=nums[l],nums[i]
+            i+=1
+            l+=1
+          elif nums[i]==2:
+            nums[i],nums[r]=nums[r],nums[i]
+            r-=1
+          else:
+            i+=1
         
