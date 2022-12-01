@@ -18,6 +18,7 @@ class Solution:
               s.add('row'+str(i)+board[i][j])
               s.add('col'+str(j)+board[i][j])
               s.add('box'+str(((i//3)*3)+(j//3))+board[i][j])
-      print(s)       
+              
+           
       return True
         
