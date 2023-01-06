@@ -1,42 +1,39 @@
 class Solution:
     
     
-    def bipartite(self,v, adj, color):
+    def bipartite(self,v,col, adj, color):
         
-        queue=[]
-        
-        queue.append(v)
-        color[0]=0
-        
-        while queue:
-            node=queue.pop(0)
-            
-            for ad_node in adj[node]:
-                
-                if color[ad_node]==-1:
-                    if color[node]==0:
-                        
-                        color[ad_node]=1
-                    else:
-                        color[ad_node]=0
-                    queue.append(ad_node)
-                else:
-                    if color[ad_node]==color[node]:
-                        
+        color[v]=col
+        for ad_node in adj[v]:
+            # print(color[ad_node])
+            if color[ad_node]==-1:
+                # self.bipartite(ad_node, not(col), adj, color)
+                if col==0:
+                    if self.bipartite(ad_node, 1, adj, color)==False:
                         return False
+                else:
+                    if self.bipartite(ad_node, 0, adj, color)==False:
+                        return False
+            elif color[ad_node]==col:
+                # print(True)
+                return False
         return True
-            
-        
+                    
+                
+                
 	def isBipartite(self, v, adj):
 	    
 		#code here
 		color=[-1]*v
-		
+# 		print(color,v)
 		for i in range(v):
 		    
-		    if self.bipartite(i, adj, color)== False:
+		    if color[i]==-1:
 		        
-		        return False
+    		    if self.bipartite(i,0, adj, color)== False:
+    		        
+    		        return False
+    		        
 		return True
 		    
 
