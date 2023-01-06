@@ -7,20 +7,18 @@ class Solution:
         for ad_node in adj[v]:
             # print(color[ad_node])
             if color[ad_node]==-1:
-                # self.bipartite(ad_node, not(col), adj, color)
-                if col==0:
-                    if self.bipartite(ad_node, 1, adj, color)==False:
-                        return False
-                else:
-                    if self.bipartite(ad_node, 0, adj, color)==False:
-                        return False
+                if self.bipartite(ad_node, not(col), adj, color)==False:
+                    return False
+                # if col==0:
+                #     if self.bipartite(ad_node, 1, adj, color)==False:
+                #         return False
+                # else:
+                #     if self.bipartite(ad_node, 0, adj, color)==False:
+                #         return False
             elif color[ad_node]==col:
                 # print(True)
                 return False
         return True
-                    
-                
-                
 	def isBipartite(self, v, adj):
 	    
 		#code here
