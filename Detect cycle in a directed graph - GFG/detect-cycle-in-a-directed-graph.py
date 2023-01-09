@@ -3,37 +3,39 @@
 
 class Solution:
     
-    #Function to detect cycle in a directed graph.
-    
-    def cycle(self,v, adj, visited, path_visited):
-        
-        visited[v]=1
-        path_visited[v]=1
-        
-        for i in adj[v]:
-            
-            if visited[i]==0:
-                if self.cycle(i, adj, visited, path_visited)==True:
-                    return True
-            elif path_visited[i]==1:
-                return True
-        path_visited[v]=0
-        return False
-        
-        
+
     def isCyclic(self, v, adj):
         # code herr
-        visited=[0]*v
-        path_visited=[0]*v        
+        coming_degree=[0]*v
+        
         for i in range(v):
             
-            if visited[i]==0:
-                
-                if self.cycle(i,adj,visited, path_visited)==True:
-                    return True
-        return False
-                    
+            for j in adj[i]:
+                coming_degree[j]+=1
         
+        queue=[]
+        
+        for i in range(v):
+            if coming_degree[i]==0:
+                queue.append(i)
+        
+        count=0
+        
+        while queue:
+            
+            node=queue.pop(0)
+            count+=1
+            
+            for i in adj[node]:
+                coming_degree[i]-=1
+                
+                if coming_degree[i]==0:
+                    queue.append(i)
+        if count==v:
+            return False
+        else:
+            
+            return True
 
 #{ 
  # Driver Code Starts
